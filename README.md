@@ -6,6 +6,8 @@ Provides a simple force directed topology graph for kubernetes items.
 #### Disclaimer
 This is an early implementation and is subject to change.
 
+![Screenshot](https://raw.github.com/stefwalter/topology-graph/master/screenshot.png)
+
 Getting Started
 ---------------
 
@@ -46,7 +48,8 @@ You need to have the following in your scope. Each is discussed in details below
 To use the element:
 
 ```
-<kubernetes-topology-graph></kubernetes-topology-graph>
+<kubernetes-topology-graph items="my_items" relations="my_relations" kinds="my_kinds">
+</kubernetes-topology-graph>
 ```
 
 Include the CSS file:
