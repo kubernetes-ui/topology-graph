@@ -18,13 +18,15 @@
     }
     kubernetes-topology-graph {
       border: 40px solid lightgray;
-      height: 700px;
+      position: fixed;
+      height: 100%;
+      width: 100%;
     }
     .controls {
       width: 20%;
       position: absolute;
-      top: 720px;
-      left: 20px;
+      bottom: 60px;
+      left: 60px;
     }
   </style>
   <link rel="stylesheet" href="topology-graph.css">
@@ -34,13 +36,13 @@
 </head>
 <body ng-app="exampleApp">
 
+    <kubernetes-topology-graph items="data.items" relations="data.relations" kinds="kinds">
+    </kubernetes-topology-graph>
+
     <div class="controls">
        <button ng-click="poke()">Poke</button>
        <label id="selected"></label>
     </div>
-
-    <kubernetes-topology-graph items="data.items" relations="data.relations" kinds="kinds">
-    </kubernetes-topology-graph>
 
     <script type="text/javascript">
         var datasets = [];
