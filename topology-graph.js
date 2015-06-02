@@ -98,15 +98,16 @@
                 }
             });
 
-        function icon(item) {
+        function icon(d) {
 	    var text;
 	    if (kinds)
-		text = kinds[item.kind];
+		text = kinds[d.item.kind];
 	    return text || "";
 	}
 
-        function weak(item) {
-            if (item.status && item.status.phase && item.status.phase !== "Running")
+        function weak(d) {
+	    var status = d.item.status;
+            if (status && status.phase && status.phase !== "Running")
                 return true;
             return false;
         }
@@ -124,16 +125,16 @@
             edges.exit().remove();
             edges.enter().insert("line", ":first-child");
 
-            edges.attr("class", function(relation) { return relation.kinds; });
+            edges.attr("class", function(d) { return d.kinds; });
 
             vertices = svg.selectAll("g")
-                .data(nodes, function(item) { return item.id; })
+                .data(nodes, function(d) { return d.id; })
                 .classed("weak", weak);
 
             vertices.exit().remove();
 
             var group = vertices.enter().append("g")
-                .attr("class", function(item) { return item.kind; })
+                .attr("class", function(d) { return d.item.kind; })
                 .classed("weak", weak)
                 .call(drag);
 
@@ -143,7 +144,7 @@
                 .attr("y", 6)
                 .text(icon);
             group.append("title")
-                .text(function(item) { return item.metadata.name; });
+                .text(function(d) { return d.item.metadata.name; });
 
             force
                 .nodes(nodes)
@@ -160,31 +161,23 @@
             links = [];
             lookup = { };
 
-            var item, id, kind, old;
+            var item, id, kind, node;
             for (id in items) {
                 item = items[id];
                 kind = item.kind;
 
-                /* Continue the d3 force layout tradition of modifying items */
-                item.id = id;
-
-                /* Requesting to only show certain kinds */
                 if (kinds && !kinds[kind])
                     continue;
 
                 /* Prevents flicker */
-                old = pnodes[plookup[id]];
-                if (old) {
-                    item.x = old.x;
-                    item.y = old.y;
-                    item.px = old.px;
-                    item.py = old.py;
-                    item.fixed = old.fixed;
-                    item.weight = old.weight;
-                }
+                node = pnodes[plookup[id]];
+                if (!node)
+	            node = { };
+                node.id = id;
+                node.item = item;
 
                 lookup[id] = nodes.length;
-                nodes.push(item);
+                nodes.push(node);
             }
 
             var i, len, relation, s, t;
@@ -196,7 +189,7 @@
                 if (s === undefined || t === undefined)
                     continue;
 
-                links.push({ source: s, target: t, kinds: kinds });
+                links.push({ source: s, target: t, kinds: nodes[s].item.kind + nodes[t].item.kind });
             }
 
             update();

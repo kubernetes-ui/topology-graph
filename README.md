@@ -81,8 +81,6 @@ have the following properties:
 
  * ```relation.source```: string key of an item in the ```items``` map.
  * ```relation.target```: string key of an item in the ```items``` map.
- * ```relation.kinds```: string concatenation of the two kubernetes kinds involved
-   (eg: ```PodService```), in source -> target order.
 
 #### 'selected'
 
