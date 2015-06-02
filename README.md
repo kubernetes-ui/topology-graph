@@ -34,8 +34,7 @@ grunt depends
 firefox index.html
 ```
 
-This will install any required dependencies and then make the `index.html` example available on [http://localhost:9000](http://localhost:9000)
-
+This will install any required dependencies necessary to run the ```index.html``` demo.
 Usage
 -----
 

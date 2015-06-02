@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['*.js'],
+        src: ['topology-graph.js'],
         dest: 'dist/topology-graph.js'
       }
     },
