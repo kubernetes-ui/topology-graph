@@ -7,8 +7,8 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['src/**/*.js'],
-        dest: 'dist/<%= pkg.name %>.js'
+        src: ['*.js'],
+        dest: 'dist/topology-graph.js'
       }
     },
     uglify: {
@@ -60,17 +60,13 @@ module.exports = function(grunt) {
       },
       server: {}
     },
-    concat: {
-      dist: {
-        src: [ 'topology-graph.js' ],
-        dest: 'dist/topology-graph.js'
-      }
-    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('serve', [
     'less',
@@ -80,7 +76,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'concat:dist',
+    'concat',
     'uglify',
     'jshint'
   ]);

@@ -9,7 +9,7 @@
     "grunt-contrib-less": "~1.0.0",
     "grunt-wiredep": "~2.0.0",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-angular-templates": "~0.5.7",
-    "grunt-contrib-concat": "~0.5.1"
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-uglify": "*"
   }
 }
