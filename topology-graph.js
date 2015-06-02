@@ -51,16 +51,16 @@
 
         var svg = outer.append("svg").attr("class", "kube-topology");
 
-        var node = d3.select();
-        var link = d3.select();
+        var vertices = d3.select();
+        var edges = d3.select();
 
         force.on("tick", function() {
-            link.attr("x1", function(d) { return d.source.x; })
-                .attr("y1", function(d) { return d.source.y; })
-                .attr("x2", function(d) { return d.target.x; })
-                .attr("y2", function(d) { return d.target.y; });
+            edges.attr("x1", function(d) { return d.source.x; })
+                 .attr("y1", function(d) { return d.source.y; })
+                 .attr("x2", function(d) { return d.target.x; })
+                 .attr("y2", function(d) { return d.target.y; });
 
-            node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+            vertices.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
         });
 
         drag
@@ -118,21 +118,21 @@
         }
 
         function update() {
-            link = svg.selectAll("line")
+            edges = svg.selectAll("line")
                 .data(links);
 
-            link.exit().remove();
-            link.enter().insert("line", ":first-child");
+            edges.exit().remove();
+            edges.enter().insert("line", ":first-child");
 
-            link.attr("class", function(relation) { return relation.kinds; });
+            edges.attr("class", function(relation) { return relation.kinds; });
 
-            node = svg.selectAll("g")
+            vertices = svg.selectAll("g")
                 .data(nodes, function(item) { return item.id; })
                 .classed("weak", weak);
 
-            node.exit().remove();
+            vertices.exit().remove();
 
-            var group = node.enter().append("g")
+            var group = vertices.enter().append("g")
                 .attr("class", function(item) { return item.kind; })
                 .classed("weak", weak)
                 .call(drag);
