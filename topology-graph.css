@@ -49,7 +49,7 @@ kubernetes-topology-graph {
     stroke-width: 1;
 }
 
-.kube-topology line.ReplicationController {
+.kube-topology line.ReplicationControllerPod {
     stroke-linecap: round;
     stroke-dasharray: 1, 3;
 }
