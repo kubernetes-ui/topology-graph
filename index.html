@@ -1,0 +1,25 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+  <title>Topology Graph Example</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="topology-graph.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
+  <script src="topology-graph.js"></script>
+</head>
+<body ng-app="exampleApp" style="border: 40px solid lightgray;">
+
+    <script type="text/javascript">
+        angular.module('exampleApp', ['kubernetesUI'])
+	    .run(function($rootScope) {
+                $rootScope.kubernetesExamplePod = window.EXAMPLE_POD;
+                $rootScope.kubernetesExampleService = window.EXAMPLE_SERVICE;
+                $rootScope.kubernetesExampleHeadlessService = window.EXAMPLE_HEADLESS_SERVICE;
+                $rootScope.kubernetesExampleRC = window.EXAMPLE_RC;
+            });
+    </script>
+</body>
+</html>
