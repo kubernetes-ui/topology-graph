@@ -10,14 +10,13 @@
     "angularjs"
   ],
   "authors": [
-    "Stef Walter <stefw@redhat.com"
+    "Stef Walter <stefw@redhat.com>"
   ],
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "scratch"
   ],
   "main": [
     "dist/topology-graph.js"

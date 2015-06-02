@@ -6,7 +6,7 @@ Provides a simple force directed topology graph for kubernetes items.
 #### Disclaimer
 This is an early implementation and is subject to change.
 
-![Screenshot](https://raw.github.com/stefwalter/topology-graph/master/screenshot.png)
+![Screenshot](https://raw.github.com/kubernetes-ui/topology-graph/master/scratch/screenshot.png)
 
 Getting Started
 ---------------
