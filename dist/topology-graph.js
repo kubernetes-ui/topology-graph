@@ -38,6 +38,7 @@
         /* Cached information */
         var width;
         var height;
+        var timeout;
         var nodes = [];
         var links = [];
         var lookup = { };
@@ -113,6 +114,10 @@
         }
 
         function adjust() {
+            timeout = null;
+            width = outer.node().clientWidth;
+            height = outer.node().clientHeight;
+
             force.size([width, height]);
             svg.attr("width", width).attr("height", height);
             update();
@@ -172,7 +177,7 @@
                 /* Prevents flicker */
                 node = pnodes[plookup[id]];
                 if (!node)
-	            node = { };
+	            node = { y: height / 2, x: width / 2, py: height / 2, px: width / 2 };
                 node.id = id;
                 node.item = item;
 
@@ -196,9 +201,8 @@
         }
 
         function resized() {
-            width = outer.node().clientWidth;
-            height = outer.node().clientHeight;
-            adjust();
+            if (!timeout)
+                timeout = window.setTimeout(adjust, 50);
         }
 
         window.addEventListener('resize', resized);
@@ -220,6 +224,7 @@
             },
             close: function() {
 	        window.removeEventListener('resize', resized);
+                window.clearTimeout(timeout);
             }
         };
     }

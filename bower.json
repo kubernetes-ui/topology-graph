@@ -14,6 +14,10 @@
   ],
   "ignore": [
     "**/.*",
+    "Gruntfile.js",
+    "index.html",
+    "package.json",
+    "/topology-graph.*",
     "node_modules",
     "bower_components",
     "scratch"

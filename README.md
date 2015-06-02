@@ -35,8 +35,15 @@ firefox index.html
 ```
 
 This will install any required dependencies necessary to run the ```index.html``` demo.
+
 Usage
 -----
+
+Retrieve the package with bower into your dependent project:
+
+```
+bower install kubernetes-topology-graph
+```
 
 You need to have the following in your scope. Each is discussed in details below.
 
@@ -51,10 +58,11 @@ To use the element:
 </kubernetes-topology-graph>
 ```
 
-Include the CSS file:
+Include the JS and CSS files, after angularjs and d3:
 
 ```
-<link rel="stylesheet" href="topology-graph.css">
+<script rel="stylesheet" href="bower_components/kubernetes-topology-graph/dist/topology-graph.js">
+<link rel="stylesheet" href="bower_components/kubernetes-topology-graph/dist/topology-graph.css">
 ```
 
 Documentation

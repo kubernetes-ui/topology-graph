@@ -9,6 +9,10 @@ module.exports = function(grunt) {
       dist: {
         src: ['topology-graph.js'],
         dest: 'dist/topology-graph.js'
+      },
+      css: {
+        src: ['topology-graph.css'],
+        dest: 'dist/topology-graph.css'
       }
     },
     uglify: {
@@ -20,9 +24,6 @@ module.exports = function(grunt) {
           'dist/topology-graph.min.js': ['<%= concat.dist.dest %>']
         }
       }
-    },
-    qunit: {
-      files: ['test/**/*.html']
     },
     jshint: {
       files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
@@ -82,7 +83,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'concat',
-    'uglify',
     'jshint'
   ]);
 
