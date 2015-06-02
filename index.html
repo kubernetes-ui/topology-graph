@@ -2,24 +2,81 @@
 <html class="no-js">
 <head>
   <meta charset="utf-8">
-  <base href="/">
   <title>Topology Graph Example</title>
   <meta name="viewport" content="width=device-width">
+  <style>
+    @font-face {
+      font-family: 'FontAwesome';
+      src: url('bower_components/font-awesome/fonts/fontawesome-webfont.woff') format('woff');
+    }
+    * {
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+    body {
+      margin: 0px;
+    }
+    kubernetes-topology-graph {
+      border: 40px solid lightgray;
+      height: 700px;
+    }
+    .controls {
+      width: 20%;
+      position: absolute;
+      top: 720px;
+      left: 20px;
+    }
+  </style>
   <link rel="stylesheet" href="topology-graph.css">
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/d3/d3.js"></script>
   <script src="topology-graph.js"></script>
 </head>
-<body ng-app="exampleApp" style="border: 40px solid lightgray;">
+<body ng-app="exampleApp">
+
+    <div class="controls">
+       <button ng-click="poke()">Poke</button>
+       <label id="selected"></label>
+    </div>
+
+    <kubernetes-topology-graph items="data.items" relations="data.relations" kinds="kinds">
+    </kubernetes-topology-graph>
 
     <script type="text/javascript">
+        var datasets = [];
+
+        function sink(dataset) {
+	   datasets.push(dataset);
+        }
+
         angular.module('exampleApp', ['kubernetesUI'])
 	    .run(function($rootScope) {
-                $rootScope.kubernetesExamplePod = window.EXAMPLE_POD;
-                $rootScope.kubernetesExampleService = window.EXAMPLE_SERVICE;
-                $rootScope.kubernetesExampleHeadlessService = window.EXAMPLE_HEADLESS_SERVICE;
-                $rootScope.kubernetesExampleRC = window.EXAMPLE_RC;
+                var index = 0;
+                $rootScope.data = datasets[index];
+
+                $rootScope.kinds = {
+                  Pod: '\uf1b3', /* fa-cubes */
+                  ReplicationController: '\uf1b8', /* fa-cog */
+                  Node: '\uf1c0', /* fa-database */
+                  Service: '\uf0ec', /* fa-exchange */
+                };
+
+                $rootScope.poke = function() {
+                   index += 1;
+                   $rootScope.data = datasets[index % datasets.length];
+                };
+
+                $rootScope.$on("selected", function(ev, item) {
+                   var text = "";
+                   if (item)
+                       text = "Selected: " + item.metadata.name;
+                   angular.element(document.getElementById("selected")).text(text);
+                });
             });
     </script>
+
+    <!-- JSONP data sets to load -->
+    <script src="data-set-1.jsonp"></script>
+    <script src="data-set-2.jsonp"></script>
 </body>
 </html>

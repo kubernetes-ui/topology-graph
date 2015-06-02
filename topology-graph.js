@@ -18,11 +18,10 @@
  */
 
 (function(root, factory) {
-    if (typeof(define) === 'function' && define.amd) {
-	define(["./angular", "./d3" ], factory);
-    } else {
-	factory(root.angular, root.d3);
-    }
+    if (typeof(define) === 'function' && define.amd)
+        define(["./angular", "./d3" ], factory);
+    else
+        factory(root.angular, root.d3);
 }(this, function(angular, d3) {
     "use strict";
 
@@ -205,7 +204,7 @@
 
         function resized() {
             width = outer.node().clientWidth;
-            height = window.innerHeight - 15;
+            height = outer.node().clientHeight;
             adjust();
         }
 
@@ -235,7 +234,7 @@
     /* The kubernetesUI component is quite loosely bound, define if it doesn't exist */
     try { angular.module("kubernetesUI"); } catch(e) { angular.module("kubernetesUI", []); }
 
-    return angular.module('kubernetesUI', [ 'ngRoute', 'kubernetesUI' ])
+    return angular.module('kubernetesUI')
         .directive('kubernetesTopologyGraph', [
             function() {
                 return {

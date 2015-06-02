@@ -1,0 +1,1036 @@
+sink({
+    "items": {
+        "39113587-088f-11e5-b0b0-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "kind": "Node",
+            "metadata": {
+                "creationTimestamp": "2015-06-01T18:51:33Z",
+                "name": "node-1.rha",
+                "resourceVersion": "10465",
+                "selfLink": "/api/v1beta3/nodes/node-1.rha",
+                "uid": "39113587-088f-11e5-b0b0-525400398fe5"
+            },
+            "spec": {
+                "externalID": "node-1.rha"
+            },
+            "status": {
+                "capacity": {
+                    "cpu": "1",
+                    "memory": "4047776Ki"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2015-06-02T16:02:34Z",
+                        "lastTransitionTime": "2015-06-01T18:52:24Z",
+                        "reason": "kubelet is posting ready status",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "nodeInfo": {
+                    "bootID": "d51f8e13-399c-4245-9e88-3091c4d1f6f2",
+                    "containerRuntimeVersion": "docker://1.6.0",
+                    "kernelVersion": "4.0.4-301.fc22.x86_64",
+                    "kubeProxyVersion": "v0.16.2-659-g63182318c5876b",
+                    "kubeletVersion": "v0.16.2-659-g63182318c5876b",
+                    "machineID": "0fed1fe218d1a8449292cce385ada4e6",
+                    "osImage": "Red Hat Enterprise Linux Atomic Host 7.1",
+                    "systemUUID": "0FED1FE2-18D1-A844-9292-CCE385ADA4E6"
+                }
+            }
+        },
+        "3953a982-088f-11e5-b0b0-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "3953a982-088f-11e5-b0b0-525400398fe5",
+            "index": 10,
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2015-06-01T18:51:33Z",
+                "labels": {
+                    "component": "apiserver",
+                    "provider": "kubernetes"
+                },
+                "name": "kubernetes",
+                "namespace": "default",
+                "resourceVersion": "5",
+                "selfLink": "/api/v1beta3/namespaces/default/services/kubernetes",
+                "uid": "3953a982-088f-11e5-b0b0-525400398fe5"
+            },
+            "px": 525.4949878190479,
+            "py": 261.9052678438836,
+            "spec": {
+                "portalIP": "10.254.0.2",
+                "ports": [
+                    {
+                        "name": "",
+                        "port": 443,
+                        "protocol": "TCP",
+                        "targetPort": 443
+                    }
+                ],
+                "selector": null,
+                "sessionAffinity": "None"
+            },
+            "status": {},
+            "weight": 0,
+            "x": 523.394215056511,
+            "y": 258.51865695490426
+        },
+        "3953c23b-088f-11e5-b0b0-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "3953c23b-088f-11e5-b0b0-525400398fe5",
+            "index": 9,
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2015-06-01T18:51:33Z",
+                "labels": {
+                    "component": "apiserver",
+                    "provider": "kubernetes"
+                },
+                "name": "kubernetes-ro",
+                "namespace": "default",
+                "resourceVersion": "6",
+                "selfLink": "/api/v1beta3/namespaces/default/services/kubernetes-ro",
+                "uid": "3953c23b-088f-11e5-b0b0-525400398fe5"
+            },
+            "px": 463.4721433746296,
+            "py": 299.3408189944274,
+            "spec": {
+                "portalIP": "10.254.0.1",
+                "ports": [
+                    {
+                        "name": "",
+                        "port": 80,
+                        "protocol": "TCP",
+                        "targetPort": 80
+                    }
+                ],
+                "selector": null,
+                "sessionAffinity": "None"
+            },
+            "status": {},
+            "weight": 0,
+            "x": 457.33703512035993,
+            "y": 298.8470800923316
+        },
+        "891054a1-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "891054a1-0890-11e5-a3b5-525400398fe5",
+            "index": 13,
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "labels": {
+                    "name": "redis-master"
+                },
+                "name": "redis-master",
+                "namespace": "guestbook4",
+                "resourceVersion": "81",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/services/redis-master",
+                "uid": "891054a1-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": -400.54802999104936,
+            "py": 1435.2252494952356,
+            "spec": {
+                "portalIP": "10.254.166.23",
+                "ports": [
+                    {
+                        "name": "",
+                        "port": 6379,
+                        "protocol": "TCP",
+                        "targetPort": 6379
+                    }
+                ],
+                "selector": {
+                    "name": "redis-master"
+                },
+                "sessionAffinity": "None"
+            },
+            "status": {},
+            "weight": 1,
+            "x": -470.1904506611357,
+            "y": 1491.5415506877396
+        },
+        "89222e96-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "89222e96-0890-11e5-a3b5-525400398fe5",
+            "index": 14,
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "labels": {
+                    "name": "redis-slave"
+                },
+                "name": "redis-slave",
+                "namespace": "guestbook4",
+                "resourceVersion": "83",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/services/redis-slave",
+                "uid": "89222e96-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": 354.5234029520906,
+            "py": 91.42330478629532,
+            "spec": {
+                "portalIP": "10.254.94.104",
+                "ports": [
+                    {
+                        "name": "",
+                        "port": 6379,
+                        "protocol": "TCP",
+                        "targetPort": 6379
+                    }
+                ],
+                "selector": {
+                    "name": "redis-slave"
+                },
+                "sessionAffinity": "None"
+            },
+            "status": {},
+            "weight": 2,
+            "x": 320.56221866582,
+            "y": 102.00799729694968
+        },
+        "892e8cee-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "892e8cee-0890-11e5-a3b5-525400398fe5",
+            "index": 15,
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "labels": {
+                    "name": "frontend"
+                },
+                "name": "frontend",
+                "namespace": "guestbook4",
+                "resourceVersion": "85",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/services/frontend",
+                "uid": "892e8cee-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": 1594.7252608712558,
+            "py": -541.7816406725098,
+            "spec": {
+                "portalIP": "10.254.144.177",
+                "ports": [
+                    {
+                        "name": "",
+                        "port": 80,
+                        "protocol": "TCP",
+                        "targetPort": 80
+                    }
+                ],
+                "selector": {
+                    "name": "frontend"
+                },
+                "sessionAffinity": "None"
+            },
+            "status": {},
+            "weight": 3,
+            "x": 1594.905337628749,
+            "y": -538.4689827387112
+        },
+        "89443a7e-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "89443a7e-0890-11e5-a3b5-525400398fe5",
+            "index": 0,
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "labels": {
+                    "name": "redis-master"
+                },
+                "name": "redis-master",
+                "namespace": "guestbook4",
+                "resourceVersion": "686",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/pods/redis-master",
+                "uid": "89443a7e-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": -322.20293463806587,
+            "py": -207.4572525751052,
+            "spec": {
+                "containers": [
+                    {
+                        "capabilities": {},
+                        "image": "stefwalter/redis:latest",
+                        "imagePullPolicy": "Always",
+                        "name": "master",
+                        "ports": [
+                            {
+                                "containerPort": 6379,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {}
+                        },
+                        "terminationMessagePath": "/dev/termination-log"
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "host": "node-1.rha",
+                "restartPolicy": "Always",
+                "volumes": null
+            },
+            "status": {
+                "Condition": [
+                    {
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://da14d7343dcfe3ebb613dbffe253644f31d5ad344fc59884556760ec70b64d09",
+                        "image": "stefwalter/redis:latest",
+                        "imageID": "docker://deb0a69eaa07fa6dd2f7fdd5cda053fa8bb1d2002040cb9172a16cf66005162b",
+                        "lastState": {
+                            "termination": {
+                                "containerID": "docker://bd9e1653f5b7dfe66e0fb69682df25897d34869d4ed44b35c3b7693ad0d94c5f",
+                                "exitCode": 0,
+                                "finishedAt": "2015-06-02T05:39:43Z",
+                                "startedAt": "2015-06-01T19:01:17Z"
+                            }
+                        },
+                        "name": "master",
+                        "ready": true,
+                        "restartCount": 1,
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-06-02T05:40:50Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "18.0.61.7"
+            },
+            "weight": 2,
+            "x": -330.26477097206845,
+            "y": -169.24672952413917
+        },
+        "8959751f-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "8959751f-0890-11e5-a3b5-525400398fe5",
+            "index": 11,
+            "kind": "ReplicationController",
+            "metadata": {
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "labels": {
+                    "name": "redis-slave"
+                },
+                "name": "redis-slave",
+                "namespace": "guestbook4",
+                "resourceVersion": "111",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/replicationcontrollers/redis-slave",
+                "uid": "8959751f-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": 423.87570524344557,
+            "py": 71.86078221268558,
+            "spec": {
+                "replicas": 2,
+                "selector": {
+                    "name": "redis-slave"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "name": "redis-slave"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "capabilities": {},
+                                "image": "stefwalter/redis-slave:v2",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "slave",
+                                "ports": [
+                                    {
+                                        "containerPort": 6379,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "securityContext": {
+                                    "capabilities": {}
+                                },
+                                "terminationMessagePath": "/dev/termination-log"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "volumes": null
+                    }
+                }
+            },
+            "status": {
+                "replicas": 2
+            },
+            "weight": 2,
+            "x": 406.9411278600464,
+            "y": 78.64957678310188
+        },
+        "8960db98-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "8960db98-0890-11e5-a3b5-525400398fe5",
+            "index": 1,
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1beta3\",\"reference\":{\"kind\":\"ReplicationController\",\"namespace\":\"guestbook4\",\"name\":\"redis-slave\",\"uid\":\"8959751f-0890-11e5-a3b5-525400398fe5\",\"apiVersion\":\"v1beta3\",\"resourceVersion\":\"90\"}}"
+                },
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "generateName": "redis-slave-",
+                "labels": {
+                    "name": "redis-slave"
+                },
+                "name": "redis-slave-xmboh",
+                "namespace": "guestbook4",
+                "resourceVersion": "675",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/pods/redis-slave-xmboh",
+                "uid": "8960db98-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": 253.97503022839777,
+            "py": 122.7309799090041,
+            "spec": {
+                "containers": [
+                    {
+                        "capabilities": {},
+                        "image": "stefwalter/redis-slave:v2",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "slave",
+                        "ports": [
+                            {
+                                "containerPort": 6379,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {}
+                        },
+                        "terminationMessagePath": "/dev/termination-log"
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "host": "node-1.rha",
+                "restartPolicy": "Always",
+                "volumes": null
+            },
+            "status": {
+                "Condition": [
+                    {
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://18e52168219dd3edd71cfd37c94750a627fd63b3542d79bc7dc1f8bbf002d245",
+                        "image": "stefwalter/redis-slave:v2",
+                        "imageID": "docker://e6dc7726402fed07c856f82df186ecabeeea99b9d6846b5e72e1d6de59f50fad",
+                        "lastState": {
+                            "termination": {
+                                "containerID": "docker://6e4fcfa83e6cb1539126ab9db203f624d71a8e2602c04fcaec04bc521e11dd87",
+                                "exitCode": 0,
+                                "finishedAt": "2015-06-02T05:39:43Z",
+                                "startedAt": "2015-06-01T19:01:11Z"
+                            }
+                        },
+                        "name": "slave",
+                        "ready": true,
+                        "restartCount": 1,
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-06-02T05:40:40Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "18.0.61.2"
+            },
+            "weight": 3,
+            "x": 201.96996121657807,
+            "y": 134.57442174449884
+        },
+        "89610137-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "89610137-0890-11e5-a3b5-525400398fe5",
+            "index": 4,
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1beta3\",\"reference\":{\"kind\":\"ReplicationController\",\"namespace\":\"guestbook4\",\"name\":\"redis-slave\",\"uid\":\"8959751f-0890-11e5-a3b5-525400398fe5\",\"apiVersion\":\"v1beta3\",\"resourceVersion\":\"90\"}}"
+                },
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "generateName": "redis-slave-",
+                "labels": {
+                    "name": "redis-slave"
+                },
+                "name": "redis-slave-y1a8g",
+                "namespace": "guestbook4",
+                "resourceVersion": "678",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/pods/redis-slave-y1a8g",
+                "uid": "89610137-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": 392.77933934511833,
+            "py": 82.20660921640913,
+            "spec": {
+                "containers": [
+                    {
+                        "capabilities": {},
+                        "image": "stefwalter/redis-slave:v2",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "slave",
+                        "ports": [
+                            {
+                                "containerPort": 6379,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {}
+                        },
+                        "terminationMessagePath": "/dev/termination-log"
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "host": "node-1.rha",
+                "restartPolicy": "Always",
+                "volumes": null
+            },
+            "status": {
+                "Condition": [
+                    {
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://cbbe7ae54aac317a2bbd5d02215715650b54ae380667ba09594a3ba1b05bee89",
+                        "image": "stefwalter/redis-slave:v2",
+                        "imageID": "docker://e6dc7726402fed07c856f82df186ecabeeea99b9d6846b5e72e1d6de59f50fad",
+                        "lastState": {
+                            "termination": {
+                                "containerID": "docker://a729ab2330c44ffe0e0596f54e28eac927661478cfaf35b23802ce855b61fa3a",
+                                "exitCode": 0,
+                                "finishedAt": "2015-06-02T05:39:43Z",
+                                "startedAt": "2015-06-01T19:01:12Z"
+                            }
+                        },
+                        "name": "slave",
+                        "ready": true,
+                        "restartCount": 1,
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-06-02T05:40:40Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "18.0.61.6"
+            },
+            "weight": 3,
+            "x": 447.2274793497317,
+            "y": 63.11738471755024
+        },
+        "89672aaf-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "89672aaf-0890-11e5-a3b5-525400398fe5",
+            "index": 12,
+            "kind": "ReplicationController",
+            "metadata": {
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "labels": {
+                    "name": "frontend"
+                },
+                "name": "frontend",
+                "namespace": "guestbook4",
+                "resourceVersion": "116",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/replicationcontrollers/frontend",
+                "uid": "89672aaf-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": 260.90629540462,
+            "py": 128.67915158011232,
+            "spec": {
+                "replicas": 3,
+                "selector": {
+                    "name": "frontend"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "name": "frontend"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "capabilities": {},
+                                "image": "stefwalter/example-guestbook-php-redis:v2",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "php-redis",
+                                "ports": [
+                                    {
+                                        "containerPort": 80,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "securityContext": {
+                                    "capabilities": {}
+                                },
+                                "terminationMessagePath": "/dev/termination-log"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "volumes": null
+                    }
+                }
+            },
+            "status": {
+                "replicas": 3
+            },
+            "weight": 3,
+            "x": 327.5613862969874,
+            "y": 111.10673012344549
+        },
+        "897f26dd-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "897f26dd-0890-11e5-a3b5-525400398fe5",
+            "index": 6,
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1beta3\",\"reference\":{\"kind\":\"ReplicationController\",\"namespace\":\"guestbook4\",\"name\":\"frontend\",\"uid\":\"89672aaf-0890-11e5-a3b5-525400398fe5\",\"apiVersion\":\"v1beta3\",\"resourceVersion\":\"94\"}}"
+                },
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "generateName": "frontend-",
+                "labels": {
+                    "name": "frontend"
+                },
+                "name": "frontend-cfie3",
+                "namespace": "guestbook4",
+                "resourceVersion": "673",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/pods/frontend-cfie3",
+                "uid": "897f26dd-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": -8.327533665412252,
+            "py": 162.30976668350297,
+            "spec": {
+                "containers": [
+                    {
+                        "capabilities": {},
+                        "image": "stefwalter/example-guestbook-php-redis:v2",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "php-redis",
+                        "ports": [
+                            {
+                                "containerPort": 80,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {}
+                        },
+                        "terminationMessagePath": "/dev/termination-log"
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "host": "node-1.rha",
+                "restartPolicy": "Always",
+                "volumes": null
+            },
+            "status": {
+                "Condition": [
+                    {
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://5ab9deb0eb5b45395ebdf6717b44c768d6f10b29fc250c1d82a982e8438c95c6",
+                        "image": "stefwalter/example-guestbook-php-redis:v2",
+                        "imageID": "docker://c868c3491a62e04c25b462f06f8dc195732f6d521c91c41bb22a60999c9d99c5",
+                        "lastState": {
+                            "termination": {
+                                "containerID": "docker://8d27607dbe58b6802bcbf0fd3b07aa19288e5b9fe3d0847759d1c4154c2d49ab",
+                                "exitCode": 0,
+                                "finishedAt": "2015-06-02T05:39:43Z",
+                                "startedAt": "2015-06-01T19:01:17Z"
+                            }
+                        },
+                        "name": "php-redis",
+                        "ready": true,
+                        "restartCount": 1,
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-06-02T05:40:38Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "18.0.61.3"
+            },
+            "weight": 3,
+            "x": 157.24946043411106,
+            "y": 87.78303793802469
+        },
+        "897f4916-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "897f4916-0890-11e5-a3b5-525400398fe5",
+            "index": 7,
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1beta3\",\"reference\":{\"kind\":\"ReplicationController\",\"namespace\":\"guestbook4\",\"name\":\"frontend\",\"uid\":\"89672aaf-0890-11e5-a3b5-525400398fe5\",\"apiVersion\":\"v1beta3\",\"resourceVersion\":\"94\"}}"
+                },
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "generateName": "frontend-",
+                "labels": {
+                    "name": "frontend"
+                },
+                "name": "frontend-cv934",
+                "namespace": "guestbook4",
+                "resourceVersion": "671",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/pods/frontend-cv934",
+                "uid": "897f4916-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": 403.9176234315363,
+            "py": 8.905389161641848,
+            "spec": {
+                "containers": [
+                    {
+                        "capabilities": {},
+                        "image": "stefwalter/example-guestbook-php-redis:v2",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "php-redis",
+                        "ports": [
+                            {
+                                "containerPort": 80,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {}
+                        },
+                        "terminationMessagePath": "/dev/termination-log"
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "host": "node-1.rha",
+                "restartPolicy": "Always",
+                "volumes": null
+            },
+            "status": {
+                "Condition": [
+                    {
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://5fda570e5ebdab354538ece879b3281ac373e81085d9b0181025de53824dacd0",
+                        "image": "stefwalter/example-guestbook-php-redis:v2",
+                        "imageID": "docker://c868c3491a62e04c25b462f06f8dc195732f6d521c91c41bb22a60999c9d99c5",
+                        "lastState": {
+                            "termination": {
+                                "containerID": "docker://4e1fd493c8202cd6467117ba475f8301e16c3180a38de425e8c3f04cddc4e028",
+                                "exitCode": 0,
+                                "finishedAt": "2015-06-02T05:39:43Z",
+                                "startedAt": "2015-06-01T19:01:17Z"
+                            }
+                        },
+                        "name": "php-redis",
+                        "ready": true,
+                        "restartCount": 1,
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-06-02T05:40:37Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "18.0.61.4"
+            },
+            "weight": 3,
+            "x": 548.4506097097817,
+            "y": -65.87284174180098
+        },
+        "897f63c3-0890-11e5-a3b5-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "897f63c3-0890-11e5-a3b5-525400398fe5",
+            "index": 8,
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1beta3\",\"reference\":{\"kind\":\"ReplicationController\",\"namespace\":\"guestbook4\",\"name\":\"frontend\",\"uid\":\"89672aaf-0890-11e5-a3b5-525400398fe5\",\"apiVersion\":\"v1beta3\",\"resourceVersion\":\"94\"}}"
+                },
+                "creationTimestamp": "2015-06-01T19:00:57Z",
+                "generateName": "frontend-",
+                "labels": {
+                    "name": "frontend"
+                },
+                "name": "frontend-rz8eu",
+                "namespace": "guestbook4",
+                "resourceVersion": "669",
+                "selfLink": "/api/v1beta3/namespaces/guestbook4/pods/frontend-rz8eu",
+                "uid": "897f63c3-0890-11e5-a3b5-525400398fe5"
+            },
+            "px": 895.5900578989485,
+            "py": -143.00981121991757,
+            "spec": {
+                "containers": [
+                    {
+                        "capabilities": {},
+                        "image": "stefwalter/example-guestbook-php-redis:v2",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "php-redis",
+                        "ports": [
+                            {
+                                "containerPort": 80,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {}
+                        },
+                        "terminationMessagePath": "/dev/termination-log"
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "host": "node-1.rha",
+                "restartPolicy": "Always",
+                "volumes": null
+            },
+            "status": {
+                "Condition": [
+                    {
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://fc28e55cf876722558dd643fd0c0d1b511e74dc9e3521c3053fbc67bf351fbfd",
+                        "image": "stefwalter/example-guestbook-php-redis:v2",
+                        "imageID": "docker://c868c3491a62e04c25b462f06f8dc195732f6d521c91c41bb22a60999c9d99c5",
+                        "lastState": {
+                            "termination": {
+                                "containerID": "docker://0ec0d3ca6117976f50923178cd84171dc3b8fe89b14ffe22b17b0ab3f4d9bfb1",
+                                "exitCode": 0,
+                                "finishedAt": "2015-06-02T05:39:43Z",
+                                "startedAt": "2015-06-01T19:01:17Z"
+                            }
+                        },
+                        "name": "php-redis",
+                        "ready": true,
+                        "restartCount": 1,
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-06-02T05:40:40Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "18.0.61.5"
+            },
+            "weight": 3,
+            "x": 1001.292356339048,
+            "y": -195.29383278798383
+        },
+        "a82eb2b2-08fc-11e5-a9e7-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "a82eb2b2-08fc-11e5-a9e7-525400398fe5",
+            "index": 3,
+            "kind": "Node",
+            "metadata": {
+                "creationTimestamp": "2015-06-02T07:54:55Z",
+                "name": "node-2.rha",
+                "resourceVersion": "10463",
+                "selfLink": "/api/v1beta3/nodes/node-2.rha",
+                "uid": "a82eb2b2-08fc-11e5-a9e7-525400398fe5"
+            },
+            "px": 421.83957932880463,
+            "py": 122.24596083543373,
+            "spec": {
+                "externalID": "node-2.rha"
+            },
+            "status": {
+                "capacity": {
+                    "cpu": "1",
+                    "memory": "2049452Ki"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2015-06-02T16:02:31Z",
+                        "lastTransitionTime": "2015-06-02T07:54:59Z",
+                        "reason": "kubelet is posting ready status",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "nodeInfo": {
+                    "bootID": "f18301fb-e2d0-47db-840c-4fa812f3806c",
+                    "containerRuntimeVersion": "docker://1.6.0",
+                    "kernelVersion": "4.0.4-301.fc22.x86_64",
+                    "kubeProxyVersion": "v0.16.2-659-g63182318c5876b",
+                    "kubeletVersion": "v0.16.2-659-g63182318c5876b",
+                    "machineID": "45bb3b96146aa94f299b9eb43646eb35",
+                    "osImage": "Red Hat Enterprise Linux Atomic Host 7.1",
+                    "systemUUID": "64D6E7C8-F4DC-8F4B-A8B3-48A77A09BED5"
+                }
+            },
+            "weight": 0,
+            "x": 423.67729126205217,
+            "y": 134.2229502494745
+        },
+        "a9bc7525-08fc-11e5-a9e7-525400398fe5": {
+            "apiVersion": "v1beta3",
+            "id": "a9bc7525-08fc-11e5-a9e7-525400398fe5",
+            "index": 5,
+            "kind": "Node",
+            "metadata": {
+                "creationTimestamp": "2015-06-02T07:54:57Z",
+                "name": "node-3.rha",
+                "resourceVersion": "10464",
+                "selfLink": "/api/v1beta3/nodes/node-3.rha",
+                "uid": "a9bc7525-08fc-11e5-a9e7-525400398fe5"
+            },
+            "px": 275.976833717852,
+            "py": 229.8390490800018,
+            "spec": {
+                "externalID": "node-3.rha"
+            },
+            "status": {
+                "capacity": {
+                    "cpu": "1",
+                    "memory": "2049452Ki"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2015-06-02T16:02:32Z",
+                        "lastTransitionTime": "2015-06-02T07:54:58Z",
+                        "reason": "kubelet is posting ready status",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "nodeInfo": {
+                    "bootID": "f7f2dbb2-1e41-4572-a51a-af8f32fe8e61",
+                    "containerRuntimeVersion": "docker://1.6.0",
+                    "kernelVersion": "4.0.4-301.fc22.x86_64",
+                    "kubeProxyVersion": "v0.16.2-659-g63182318c5876b",
+                    "kubeletVersion": "v0.16.2-659-g63182318c5876b",
+                    "machineID": "45bb3b96146aa94f299b9eb43646eb35",
+                    "osImage": "Red Hat Enterprise Linux Atomic Host 7.1",
+                    "systemUUID": "C27B1F97-235F-D44E-A335-3D0EB4089311"
+                }
+            },
+            "weight": 0,
+            "x": 282.69751139808943,
+            "y": 234.8450788370995
+        }
+    },
+    "relations": [
+        {
+            "kinds": "PodService",
+            "source": "891054a1-0890-11e5-a3b5-525400398fe5",
+            "target": "89443a7e-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodService",
+            "source": "89222e96-0890-11e5-a3b5-525400398fe5",
+            "target": "8960db98-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodService",
+            "source": "89222e96-0890-11e5-a3b5-525400398fe5",
+            "target": "89610137-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodService",
+            "source": "892e8cee-0890-11e5-a3b5-525400398fe5",
+            "target": "897f26dd-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodService",
+            "source": "892e8cee-0890-11e5-a3b5-525400398fe5",
+            "target": "897f4916-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodService",
+            "source": "892e8cee-0890-11e5-a3b5-525400398fe5",
+            "target": "897f63c3-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodNode",
+            "source": "39113587-088f-11e5-b0b0-525400398fe5",
+            "target": "89443a7e-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodNode",
+            "source": "39113587-088f-11e5-b0b0-525400398fe5",
+            "target": "8960db98-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodNode",
+            "source": "39113587-088f-11e5-b0b0-525400398fe5",
+            "target": "89610137-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodNode",
+            "source": "39113587-088f-11e5-b0b0-525400398fe5",
+            "target": "897f26dd-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodNode",
+            "source": "39113587-088f-11e5-b0b0-525400398fe5",
+            "target": "897f4916-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodNode",
+            "source": "39113587-088f-11e5-b0b0-525400398fe5",
+            "target": "897f63c3-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodReplicationController",
+            "source": "8959751f-0890-11e5-a3b5-525400398fe5",
+            "target": "8960db98-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodReplicationController",
+            "source": "8959751f-0890-11e5-a3b5-525400398fe5",
+            "target": "89610137-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodReplicationController",
+            "source": "89672aaf-0890-11e5-a3b5-525400398fe5",
+            "target": "897f26dd-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodReplicationController",
+            "source": "89672aaf-0890-11e5-a3b5-525400398fe5",
+            "target": "897f4916-0890-11e5-a3b5-525400398fe5"
+        },
+        {
+            "kinds": "PodReplicationController",
+            "source": "89672aaf-0890-11e5-a3b5-525400398fe5",
+            "target": "897f63c3-0890-11e5-a3b5-525400398fe5"
+        }
+    ]
+});

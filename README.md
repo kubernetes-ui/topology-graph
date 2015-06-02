@@ -28,8 +28,8 @@ To see a simple running example git clone this repo and run
 
 ```
 npm install
-bower install
-grunt serve
+grunt depends
+firefox index.html
 ```
 
 This will install any required dependencies and then make the `index.html` example available on [http://localhost:9000](http://localhost:9000)

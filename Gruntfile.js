@@ -39,8 +39,7 @@ module.exports = function(grunt) {
       files: ['<%= jshint.files %>'],
       tasks: ['jshint', 'qunit'],
       css: {
-        files: 'styles/*.less',
-        tasks: ['less']
+        files: 'topology-graph.css'
       },
       js: {
         files: [
@@ -60,6 +59,12 @@ module.exports = function(grunt) {
       },
       server: {}
     },
+    run: {
+      bower: {
+        cmd: 'node_modules/.bin/bower',
+        args: [ "update" ]
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -67,9 +72,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-run');
 
   grunt.registerTask('serve', [
-    'less',
     'build',
     'connect:server',
     "watch"
@@ -83,4 +88,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['serve']);
 
+  grunt.registerTask('depends', [ "run:bower" ]);
 };

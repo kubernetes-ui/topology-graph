@@ -39,8 +39,7 @@ module.exports = function(grunt) {
       files: ['<%= jshint.files %>'],
       tasks: ['jshint', 'qunit'],
       css: {
-        files: 'styles/*.less',
-        tasks: ['less']
+        files: 'topology-graph.css'
       },
       js: {
         files: [
@@ -60,6 +59,12 @@ module.exports = function(grunt) {
       },
       server: {}
     },
+    run: {
+      bower: {
+        cmd: 'node_modules/.bin/bower',
+        args: [ "update" ]
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -67,9 +72,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-run');
 
   grunt.registerTask('serve', [
-    'less',
     'build',
     'connect:server',
     "watch"
@@ -83,6 +88,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['serve']);
 
+  grunt.registerTask('bower', [ "run:bower" ]);
 };
 ;/*
  * This file is part of Cockpit.
@@ -104,11 +110,10 @@ module.exports = function(grunt) {
  */
 
 (function(root, factory) {
-    if (typeof(define) === 'function' && define.amd) {
-	define(["./angular", "./d3" ], factory);
-    } else {
-	factory(root.angular, root.d3);
-    }
+    if (typeof(define) === 'function' && define.amd)
+        define(["./angular", "./d3" ], factory);
+    else
+        factory(root.angular, root.d3);
 }(this, function(angular, d3) {
     "use strict";
 
@@ -321,7 +326,7 @@ module.exports = function(grunt) {
     /* The kubernetesUI component is quite loosely bound, define if it doesn't exist */
     try { angular.module("kubernetesUI"); } catch(e) { angular.module("kubernetesUI", []); }
 
-    return angular.module('kubernetesUI', [ 'ngRoute', 'kubernetesUI' ])
+    return angular.module('kubernetesUI')
         .directive('kubernetesTopologyGraph', [
             function() {
                 return {

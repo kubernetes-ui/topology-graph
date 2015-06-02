@@ -15,7 +15,6 @@ kubernetes-topology-graph {
 
 .kube-topology g.Pod text {
     fill: #e6550d;
-    transform: translate(0, 5)
 }
 
 .kube-topology g.Node text {
