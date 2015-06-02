@@ -177,7 +177,7 @@
                 /* Prevents flicker */
                 node = pnodes[plookup[id]];
                 if (!node)
-	            node = { };
+	            node = { y: height / 2, x: width / 2, py: height / 2, px: width / 2 };
                 node.id = id;
                 node.item = item;
 
