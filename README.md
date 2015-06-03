@@ -37,7 +37,7 @@ Include the JS and CSS files, after angularjs and d3:
 ```xml
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/d3/d3.js"></script>
-<script src="bower_components/kubernetes-topology-graph/dist/topology-graph.js"></script
+<script src="bower_components/kubernetes-topology-graph/dist/topology-graph.js"></script>
 <link rel="stylesheet" href="bower_components/kubernetes-topology-graph/dist/topology-graph.css" />
 ```
 
@@ -73,7 +73,7 @@ $scope.my_items = {
 };
 
 $scope.my_relations = [
-    { source: "item2", "target": "item1"
+    { source: "item2", "target": "item1"}
 ];
 
 $scope.my_kinds = {
@@ -122,7 +122,7 @@ selected.
 Styling
 -------
 
-Using the ```<defs>``` and CSS you should be able to acheive the look you want. The
+Using the ```<defs>``` and CSS you should be able to achieve the look you want. The
 directive applies the item *kind* as a class to each vertex. Each edge also gets a class
 with the concatenated item *kind* of the *source* and *target*, in that order.
 
