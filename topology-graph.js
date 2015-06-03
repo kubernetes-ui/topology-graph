@@ -176,6 +176,9 @@
                 if (!node)
 	            node = { y: height / 2, x: width / 2, py: height / 2, px: width / 2 };
                 node.id = id;
+                if(item.metadata)  {
+                   item.name = item.metadata.name;
+                }
                 node.item = item;
 
                 lookup[id] = nodes.length;
