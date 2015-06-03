@@ -66,7 +66,7 @@
 
         drag
             .on("dragstart", function(d) {
-                notify(d);
+                notify(d.item);
                 svg.selectAll("g").classed("selected", false);
                 d3.select(this).classed("selected", true);
 
