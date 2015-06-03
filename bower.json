@@ -1,6 +1,6 @@
 {
   "name": "kubernetes-topology-graph",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Provides a simple force directed topology graph of kubernetes items.",
   "moduleType": [
     "globals"
