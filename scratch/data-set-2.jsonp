@@ -948,87 +948,70 @@ sink({
     },
     "relations": [
         {
-            "kinds": "PodService",
             "source": "891054a1-0890-11e5-a3b5-525400398fe5",
             "target": "89443a7e-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodService",
             "source": "89222e96-0890-11e5-a3b5-525400398fe5",
             "target": "8960db98-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodService",
             "source": "89222e96-0890-11e5-a3b5-525400398fe5",
             "target": "89610137-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodService",
             "source": "892e8cee-0890-11e5-a3b5-525400398fe5",
             "target": "897f26dd-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodService",
             "source": "892e8cee-0890-11e5-a3b5-525400398fe5",
             "target": "897f4916-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodService",
             "source": "892e8cee-0890-11e5-a3b5-525400398fe5",
             "target": "897f63c3-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodNode",
             "source": "39113587-088f-11e5-b0b0-525400398fe5",
             "target": "89443a7e-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodNode",
             "source": "39113587-088f-11e5-b0b0-525400398fe5",
             "target": "8960db98-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodNode",
             "source": "39113587-088f-11e5-b0b0-525400398fe5",
             "target": "89610137-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodNode",
             "source": "39113587-088f-11e5-b0b0-525400398fe5",
             "target": "897f26dd-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodNode",
             "source": "39113587-088f-11e5-b0b0-525400398fe5",
             "target": "897f4916-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodNode",
             "source": "39113587-088f-11e5-b0b0-525400398fe5",
             "target": "897f63c3-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodReplicationController",
             "source": "8959751f-0890-11e5-a3b5-525400398fe5",
             "target": "8960db98-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodReplicationController",
             "source": "8959751f-0890-11e5-a3b5-525400398fe5",
             "target": "89610137-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodReplicationController",
             "source": "89672aaf-0890-11e5-a3b5-525400398fe5",
             "target": "897f26dd-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodReplicationController",
             "source": "89672aaf-0890-11e5-a3b5-525400398fe5",
             "target": "897f4916-0890-11e5-a3b5-525400398fe5"
         },
         {
-            "kinds": "PodReplicationController",
             "source": "89672aaf-0890-11e5-a3b5-525400398fe5",
             "target": "897f63c3-0890-11e5-a3b5-525400398fe5"
         }
