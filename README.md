@@ -13,17 +13,10 @@ Getting Started
 
 The kubernetes describer is provided in the kubernetes-object-describer bower package.
 
-To use the kubernetes-topology-graph bower component in another project, run:
+To get the kubernetes-topology-graph bower component in another project, run:
 
 ```
 bower install kubernetes-topology-graph --save
-```
-
-To use the topology graph directive include the ```dist/topology-graph.js'. Make sure your
-angular app / module includes ```kubernetesUI``` as a module dependency.
-
-```
-angular.module('exampleApp', ['kubernetesUI'])
 ```
 
 To see a simple running example git clone this repo and run
@@ -39,12 +32,6 @@ This will install any required dependencies necessary to run the ```index.html``
 Usage
 -----
 
-Retrieve the package with bower into your dependent project:
-
-```
-bower install kubernetes-topology-graph
-```
-
 Include the JS and CSS files, after angularjs and d3:
 
 ```xml
@@ -52,6 +39,12 @@ Include the JS and CSS files, after angularjs and d3:
 <script src="bower_components/d3/d3.js"></script>
 <script src="bower_components/kubernetes-topology-graph/dist/topology-graph.js"></script
 <link rel="stylesheet" href="bower_components/kubernetes-topology-graph/dist/topology-graph.css" />
+```
+
+Make sure your angular app / module includes ```kubernetesUI``` as a module dependency.
+
+```
+angular.module('exampleApp', ['kubernetesUI'])
 ```
 
 Define how the svg vertices (nodes) will display:
