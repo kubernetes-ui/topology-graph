@@ -66,7 +66,7 @@
 
         drag
             .on("dragstart", function(d) {
-                notify(d);
+                notify(d.item);
                 svg.selectAll("g").classed("selected", false);
                 d3.select(this).classed("selected", true);
 
@@ -143,11 +143,8 @@
                 .classed("weak", weak)
                 .call(drag);
 
-            group.append("circle")
-                .attr("r", 15);
-            group.append("text")
-                .attr("y", 6)
-                .text(icon);
+            group.append("use")
+                .attr("xlink:href", icon);
             group.append("title")
                 .text(function(d) { return d.item.metadata.name; });
 
@@ -267,5 +264,35 @@
                     }
                 };
             }
-        ]);
+        ])
+
+        .directive('kubernetesTopologyIcon',
+            function() {
+                return {
+                    restrict: 'E',
+	            transclude: true,
+                    template: "<ng-transclude></ng-transclude>",
+                    link: function($scope, element, attrs) {
+                        var kind = attrs.kind;
+                        var icon = $scope.kinds[kind];
+
+                        $scope.$watchCollection("kinds", function() {
+                            element.toggleClass("active", kind in $scope.kinds);
+                        });
+
+                        element.on("click", function() {
+                            if (kind in $scope.kinds) {
+	                        icon = $scope.kinds[kind];
+                                delete $scope.kinds[kind];
+                            } else {
+                                $scope.kinds[kind] = icon;
+                            }
+                            if ($scope.$parent)
+	                        $scope.$parent.$digest();
+	                    $scope.$digest();
+                        });
+                    }
+                };
+            }
+        );
 }));
