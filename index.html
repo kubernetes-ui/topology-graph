@@ -23,10 +23,17 @@
       width: 100%;
     }
     .controls {
-      width: 20%;
       position: absolute;
       bottom: 60px;
       left: 60px;
+      right: 60px;
+      background-color: lightgray;
+      padding: 0 10px;
+    }
+    #selected {
+      float: right;
+      display: block;
+      margin-top: 15px;
     }
   </style>
   <link rel="stylesheet" href="topology-graph.css">
@@ -40,8 +47,36 @@
     </kubernetes-topology-graph>
 
     <div class="controls">
-       <button ng-click="poke()">Poke</button>
        <label id="selected"></label>
+       <button ng-click="poke()">Poke</button>
+
+       <kubernetes-topology-icon kind="Pod">
+         <svg class="kube-topology">
+           <use xlink:href="#vertex-Pod" x="15" y="15"></use>
+         </svg>
+       </kubernetes-topology-icon>
+       <label>Pods</label>
+
+       <kubernetes-topology-icon kind="Service">
+         <svg class="kube-topology">
+           <use xlink:href="#vertex-Service" x="15" y="15"></use>
+         </svg>
+       </kubernetes-topology-icon>
+       <label>Services</label>
+
+       <kubernetes-topology-icon kind="Node">
+         <svg class="kube-topology">
+           <use xlink:href="#vertex-Node" x="15" y="15"></use>
+         </svg>
+       </kubernetes-topology-icon>
+       <label>Nodes</label>
+
+       <kubernetes-topology-icon kind="ReplicationController">
+         <svg class="kube-topology">
+           <use xlink:href="#vertex-ReplicationController" x="15" y="15"></use>
+         </svg>
+       </kubernetes-topology-icon>
+       <label>Replication Controllers</label>
     </div>
 
     <svg class="kube-topology" hidden>
