@@ -50,7 +50,7 @@ angular.module('exampleApp', ['kubernetesUI'])
 Define how the svg vertices (nodes) will display:
 
 ```xml
-    <svg class="kube-topology">
+    <svg>
       <defs>
         <g id="vertex-Node">
           <circle r="15" stroke="black" fill="white"></circle>
@@ -118,6 +118,16 @@ have the following properties:
 This is a scope event that will be emitted when the selection changes. The argument will
 be the item (from the ```items``` map) that was selected, or ```null``` if nothing is
 selected.
+
+Styling
+-------
+
+Using the ```<defs>``` and CSS you should be able to acheive the look you want. The
+directive applies the item *kind* as a class to each vertex. Each edge also gets a class
+with the concatenated item *kind* of the *source* and *target*, in that order.
+
+See ```topology-graph.css``` for an example default look and feel, that uses the classes
+described above.
 
 Contributing
 ------------
