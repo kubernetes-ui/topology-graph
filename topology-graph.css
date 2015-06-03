@@ -4,7 +4,7 @@ kubernetes-topology-graph {
 }
 
 .kube-topology g {
-    font-family: FontAwesome;
+    font-family: PatternFlyIcons-webfont;
     font-size: 18px;
     text-anchor: middle;
     cursor: pointer;
@@ -15,18 +15,22 @@ kubernetes-topology-graph {
 }
 
 .kube-topology g.Pod text {
+    font-family: FontAwesome;
     fill: #e6550d;
 }
 
 .kube-topology g.Node text {
     fill: #636363;
+    font-size: 22px;
 }
 
 .kube-topology g.Service text {
     fill: #31a354;
+    font-size: 24px;
 }
 
 .kube-topology g.ReplicationController text {
+    font-family: FontAwesome;
     fill: #3182bd;
 }
 

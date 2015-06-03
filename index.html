@@ -9,12 +9,16 @@
       font-family: 'FontAwesome';
       src: url('bower_components/font-awesome/fonts/fontawesome-webfont.woff') format('woff');
     }
+    @font-face {
+      font-family: 'PatternFlyIcons-webfont';
+      src: url('bower_components/patternfly/dist/fonts/PatternFlyIcons-webfont.woff') format('woff');
+    }
     * {
       box-sizing: border-box;
-      font-family: sans-serif;
     }
     body {
       margin: 0px;
+      font-family: sans-serif;
     }
     kubernetes-topology-graph {
       border: 40px solid lightgray;
@@ -83,15 +87,15 @@
       <defs>
         <g class="Node" id="vertex-Node">
           <circle r="15"></circle>
-          <text y="6">&#xf1c0;</text>
+          <text y="9">&#xe621;</text>
         </g>
         <g class="Pod" id="vertex-Pod">
           <circle r="15"></circle>
-          <text y="6">&#xf1b3;</text>
+          <text y="6" x="0.5">&#xf1b3;</text>
         </g>
         <g class="Service" id="vertex-Service">
           <circle r="15"></circle>
-          <text y="6">&#xf0ec;</text>
+          <text y="10" x="1">&#xe61e;</text>
         </g>
         <g class="ReplicationController" id="vertex-ReplicationController">
           <circle r="15"></circle>
