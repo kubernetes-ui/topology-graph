@@ -44,6 +44,27 @@
        <label id="selected"></label>
     </div>
 
+    <svg class="kube-topology" hidden>
+      <defs>
+        <g class="Node" id="vertex-Node">
+          <circle r="15"></circle>
+          <text y="6">&#xf1c0;</text>
+        </g>
+        <g class="Pod" id="vertex-Pod">
+          <circle r="15"></circle>
+          <text y="6">&#xf1b3;</text>
+        </g>
+        <g class="Service" id="vertex-Service">
+          <circle r="15"></circle>
+          <text y="6">&#xf0ec;</text>
+        </g>
+        <g class="ReplicationController" id="vertex-ReplicationController">
+          <circle r="15"></circle>
+          <text y="7.5">&#xf1b8;</text>
+        </g>
+      </defs>
+    </svg>
+
     <script type="text/javascript">
         var datasets = [];
 
@@ -57,10 +78,10 @@
                 $rootScope.data = datasets[index];
 
                 $rootScope.kinds = {
-                  Pod: '\uf1b3', /* fa-cubes */
-                  ReplicationController: '\uf1b8', /* fa-cog */
-                  Node: '\uf1c0', /* fa-database */
-                  Service: '\uf0ec', /* fa-exchange */
+                  Pod: '#vertex-Pod',
+                  ReplicationController: '#vertex-ReplicationController',
+                  Node: '#vertex-Node',
+                  Service: '#vertex-Service',
                 };
 
                 $rootScope.poke = function() {

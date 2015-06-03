@@ -45,24 +45,55 @@ Retrieve the package with bower into your dependent project:
 bower install kubernetes-topology-graph
 ```
 
-You need to have the following in your scope. Each is discussed in details below.
-
- * ```items``` an object map of kubernetes items to display
- * ```relations``` an array of relations between those items
- * ```kinds``` optional, a map with keys that are kubernetes *kind* strings
-
-To use the element:
-
-```
-<kubernetes-topology-graph items="my_items" relations="my_relations" kinds="my_kinds">
-</kubernetes-topology-graph>
-```
-
 Include the JS and CSS files, after angularjs and d3:
 
+```xml
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/d3/d3.js"></script>
+<script src="bower_components/kubernetes-topology-graph/dist/topology-graph.js"></script
+<link rel="stylesheet" href="bower_components/kubernetes-topology-graph/dist/topology-graph.css" />
 ```
-<script rel="stylesheet" href="bower_components/kubernetes-topology-graph/dist/topology-graph.js">
-<link rel="stylesheet" href="bower_components/kubernetes-topology-graph/dist/topology-graph.css">
+
+Define how the svg vertices (nodes) will display:
+
+```xml
+    <svg class="kube-topology">
+      <defs>
+        <g id="vertex-Node">
+          <circle r="15" stroke="black" fill="white"></circle>
+          <text y="6">N</text>
+        </g>
+        <g id="vertex-Pod">
+          <circle r="15" stroke="black" fill="white"></circle>
+          <text y="6">P</text>
+        </g>
+      </defs>
+    </svg>
+```
+
+Define the following in your controller scope:
+
+```javascript
+$scope.my_items = {
+    item1: { kind: "Node" },
+    item2: { kind: "Pod" }
+};
+
+$scope.my_relations = [
+    { source: "item2", "target": "item1"
+];
+
+$scope.my_kinds = {
+    "Pod": "#vertex-Pod",
+    "Node": "#vertex-Node"
+};
+```
+
+Now include the graph:
+
+```xml
+<kubernetes-topology-graph items="my_items" relations="my_relations" kinds="my_kinds">
+</kubernetes-topology-graph>
 ```
 
 Documentation
@@ -78,9 +109,8 @@ of this object are used in the ```relations``` attribute. The items should have 
 
 A javascript plain object with kubernetes kinds as keys (ie: *Pod*, *Service* ...). Only
 items with an ```item.kind``` that is a key in this object will be displayed. The
-values should be strings. These strings will be placed inside each item's circle in the
-topology view. Usually the strings are characters in a special icon font. The values may
-also be blank strings.
+values should be xlink hrefs (eg: html ids prefixed with '#'). These will be used to draw
+the vertices.
 
 #### relations
 

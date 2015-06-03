@@ -143,11 +143,8 @@
                 .classed("weak", weak)
                 .call(drag);
 
-            group.append("circle")
-                .attr("r", 15);
-            group.append("text")
-                .attr("y", 6)
-                .text(icon);
+            group.append("use")
+                .attr("xlink:href", icon);
             group.append("title")
                 .text(function(d) { return d.item.metadata.name; });
 
