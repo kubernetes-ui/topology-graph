@@ -44,12 +44,12 @@ kubernetes-topology-graph {
     fill: #fff;
 }
 
-.kube-topology g.selected use {
-    stroke-width: 4px;
-}
-
 .kube-topology g.fixed use {
     stroke-width: 2px;
+}
+
+.kube-topology g.selected use {
+    stroke-width: 4px;
 }
 
 .kube-topology line {

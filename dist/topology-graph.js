@@ -91,6 +91,7 @@
                 svg.selectAll("g")
                     .classed("fixed", false)
                     .each(function(d) { d.fixed = false; });
+                force.start();
             })
             .on("click", function(ev) {
                 if (!d3.select(d3.event.target).datum()) {
