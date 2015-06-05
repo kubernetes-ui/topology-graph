@@ -178,7 +178,7 @@
                 /* Prevents flicker */
                 node = pnodes[plookup[id]];
                 if (!node)
-	            node = { y: height / 2, x: width / 2, py: height / 2, px: width / 2 };
+	            node = { };
                 node.id = id;
                 node.item = item;
 
@@ -198,7 +198,8 @@
                 links.push({ source: s, target: t, kinds: nodes[s].item.kind + nodes[t].item.kind });
             }
 
-            update();
+            if (width && height)
+                update();
         }
 
         function resized() {
@@ -207,7 +208,7 @@
         }
 
         window.addEventListener('resize', resized);
-        resized();
+        adjust();
 
         return {
             kinds: function(value) {
