@@ -1,6 +1,6 @@
 {
   "name": "kubernetes-topology-graph",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Provides a simple force directed topology graph of kubernetes items.",
   "moduleType": [
     "globals"
@@ -23,7 +23,8 @@
     "scratch"
   ],
   "main": [
-    "dist/topology-graph.js"
+    "dist/topology-graph.js",
+    "dist/topology-graph.css"
   ],
   "dependencies": {
     "angular": "~1.3.8",
