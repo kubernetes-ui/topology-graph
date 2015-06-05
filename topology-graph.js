@@ -203,8 +203,8 @@
         }
 
         function resized() {
-            if (!timeout)
-                timeout = window.setTimeout(adjust, 50);
+	    window.clearTimeout(timeout);
+	    timeout = window.setTimeout(adjust, 150);
         }
 
         window.addEventListener('resize', resized);
