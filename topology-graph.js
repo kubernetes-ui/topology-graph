@@ -50,7 +50,10 @@
 
         var drag = force.drag();
 
-        var svg = outer.append("svg").attr("class", "kube-topology");
+        var svg = outer.append("svg")
+            .attr("viewBox", "0 0 1600 1200")
+            .attr("preserveAspectRatio", "xMidYMid meet")
+            .attr("class", "kube-topology");
 
         var vertices = d3.select();
         var edges = d3.select();
@@ -120,7 +123,7 @@
             height = outer.node().clientHeight;
 
             force.size([width, height]);
-            svg.attr("width", width).attr("height", height);
+            svg.attr("viewBox", "0 0 " + width + " " + height);
             update();
         }
 
