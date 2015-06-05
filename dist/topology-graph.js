@@ -50,7 +50,10 @@
 
         var drag = force.drag();
 
-        var svg = outer.append("svg").attr("class", "kube-topology");
+        var svg = outer.append("svg")
+            .attr("viewBox", "0 0 1600 1200")
+            .attr("preserveAspectRatio", "xMidYMid meet")
+            .attr("class", "kube-topology");
 
         var vertices = d3.select();
         var edges = d3.select();
@@ -120,7 +123,7 @@
             height = outer.node().clientHeight;
 
             force.size([width, height]);
-            svg.attr("width", width).attr("height", height);
+            svg.attr("viewBox", "0 0 " + width + " " + height);
             update();
         }
 
@@ -175,7 +178,7 @@
                 /* Prevents flicker */
                 node = pnodes[plookup[id]];
                 if (!node)
-	            node = { y: height / 2, x: width / 2, py: height / 2, px: width / 2 };
+	            node = { };
                 node.id = id;
                 node.item = item;
 
@@ -195,16 +198,17 @@
                 links.push({ source: s, target: t, kinds: nodes[s].item.kind + nodes[t].item.kind });
             }
 
-            update();
+            if (width && height)
+                update();
         }
 
         function resized() {
-            if (!timeout)
-                timeout = window.setTimeout(adjust, 50);
+	    window.clearTimeout(timeout);
+	    timeout = window.setTimeout(adjust, 150);
         }
 
         window.addEventListener('resize', resized);
-        resized();
+        adjust();
 
         return {
             kinds: function(value) {
