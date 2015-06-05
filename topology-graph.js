@@ -208,7 +208,9 @@
         }
 
         window.addEventListener('resize', resized);
+
         adjust();
+        resized();
 
         return {
             kinds: function(value) {
