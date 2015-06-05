@@ -12,7 +12,7 @@ kubernetes-topology-graph {
 
 .kube-topology g text {
     stroke: none;
-    stroke-width: none;
+    stroke-width: 0px;
 }
 
 .kube-topology g.weak use {
