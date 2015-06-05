@@ -30,6 +30,7 @@
     "d3": "~3.5.5"
   },
   "devDependencies": {
-    "patternfly": "~1.2.1"
+    "patternfly": "~1.2.1",
+    "font-awesome": "*"
   }
 }
