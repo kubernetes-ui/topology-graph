@@ -25,6 +25,9 @@
 }(this, function(angular, d3) {
     "use strict";
 
+    /* A cache to prevent jumping when rapidly toggling views */
+    var cache = { };
+
     function topology_graph(selector, notify) {
         var outer = d3.select(selector);
 
@@ -35,7 +38,7 @@
         var items = { };
         var relations = [ ];
 
-        /* Cached information */
+        /* Graph information */
         var width;
         var height;
         var timeout;
@@ -177,8 +180,13 @@
 
                 /* Prevents flicker */
                 node = pnodes[plookup[id]];
-                if (!node)
-	            node = { };
+                if (!node) {
+                    node = cache[id];
+                    delete cache[id];
+                    if (!node)
+                        node = { };
+                }
+
                 node.id = id;
                 node.item = item;
 
@@ -208,7 +216,9 @@
         }
 
         window.addEventListener('resize', resized);
+
         adjust();
+        resized();
 
         return {
             kinds: function(value) {
@@ -227,6 +237,21 @@
             close: function() {
 	        window.removeEventListener('resize', resized);
                 window.clearTimeout(timeout);
+
+                /*
+                 * Keep the positions of these items cached,
+                 * in case we are asked to make the same graph again.
+                 */
+                var id, node;
+                cache = { };
+                for (id in lookup) {
+                  node = nodes[lookup[id]];
+                  delete node.item;
+                  cache[id] = node;
+                }
+
+                nodes = [ ];
+                lookup = { };
             }
         };
     }
