@@ -45,6 +45,7 @@
         var nodes = [];
         var links = [];
         var lookup = { };
+        var selection = null;
 
         var force = d3.layout.force()
             .charge(-800)
@@ -73,8 +74,6 @@
         drag
             .on("dragstart", function(d) {
                 notify(d.item);
-                svg.selectAll("g").classed("selected", false);
-                d3.select(this).classed("selected", true);
 
                 if (d.fixed !== true)
                     d.floatpoint = [ d.x, d.y ];
@@ -101,10 +100,15 @@
             })
             .on("click", function(ev) {
                 if (!d3.select(d3.event.target).datum()) {
-                    notify(null);
-                    svg.selectAll("g").classed("selected", false);
+	            notify(null);
                 }
             });
+
+        function select(item) {
+	    selection = item;
+            svg.selectAll("g")
+                .classed("selected", function(d) { return d.item === item; });
+        }
 
         function icon(d) {
 	    var text;
@@ -154,6 +158,8 @@
                 .attr("xlink:href", icon);
             group.append("title")
                 .text(function(d) { return d.item.metadata.name; });
+
+            select(selection);
 
             force
                 .nodes(nodes)
@@ -221,6 +227,7 @@
         resized();
 
         return {
+            select: select,
             kinds: function(value) {
                 if (arguments.length === 0)
                     return kinds;
@@ -267,13 +274,16 @@
                     scope: {
                         items: '=',
                         relations: '=',
-                        kinds: '='
+                        kinds: '=',
+                        selection: '='
                     },
                     link: function($scope, element, attributes) {
                         element.css("display", "block");
 
                         function notify(item) {
-                            $scope.$emit("selected", item);
+                            $scope.$emit("select", item);
+                            if (!("selection" in attributes))
+	                        graph.select(item);
                         }
 
                         var graph = topology_graph(element[0], notify);
@@ -286,6 +296,11 @@
 
                         $scope.$watchGroup(["items", "relations"], function(values) {
                             graph.data(values[0], values[1]);
+                        });
+
+                        /* Watch the selection for changes */
+                        $scope.$watch("selection", function(item) {
+                            graph.select(item);
                         });
 
                         element.on("$destroy", function() {

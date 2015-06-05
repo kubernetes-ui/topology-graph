@@ -113,10 +113,16 @@ have the following properties:
  * ```relation.source```: string key of an item in the ```items``` map.
  * ```relation.target```: string key of an item in the ```items``` map.
 
-#### 'selected'
+#### selection
+If this is attribute is set, then it represents the item that should be marked as
+selected in the topology. When this is set the 'select' scope event will not automatically
+select items in the graph. It becomes the responsibility of the caller to watch for the
+event, and change the selection.
+
+#### 'select'
 
 This is a scope event that will be emitted when the selection changes. The argument will
-be the item (from the ```items``` map) that was selected, or ```null``` if nothing is
+be the item (from the ```items``` map) that is being select, or ```null``` if nothing is
 selected.
 
 Styling

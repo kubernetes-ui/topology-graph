@@ -47,12 +47,14 @@
 </head>
 <body ng-app="exampleApp">
 
-    <kubernetes-topology-graph items="data.items" relations="data.relations" kinds="kinds">
+    <kubernetes-topology-graph items="data.items" relations="data.relations"
+        kinds="kinds" selection="selection">
     </kubernetes-topology-graph>
 
     <div class="controls">
        <label id="selected"></label>
        <button ng-click="poke()">Poke</button>
+       <button ng-click="select()">Select</button>
 
        <kubernetes-topology-icon kind="Pod">
          <svg class="kube-topology">
@@ -116,6 +118,8 @@
                 var index = 0;
                 $rootScope.data = datasets[index];
 
+                $rootScope.selection = null;
+
                 $rootScope.kinds = {
                   Pod: '#vertex-Pod',
                   ReplicationController: '#vertex-ReplicationController',
@@ -128,7 +132,18 @@
                    $rootScope.data = datasets[index % datasets.length];
                 };
 
-                $rootScope.$on("selected", function(ev, item) {
+                $rootScope.select = function() {
+                    var ids = Object.keys($rootScope.data.items);
+                    var id = ids[Math.floor(Math.random() * ids.length)];
+                    $rootScope.selection = $rootScope.data.items[id];
+                };
+
+		$rootScope.$on("select", function(ev, item) {
+		    $rootScope.selection = item;
+		    $rootScope.$digest();
+		});
+
+                $rootScope.$watch("selection", function(item) {
                    var text = "";
                    if (item)
                        text = "Selected: " + item.metadata.name;
