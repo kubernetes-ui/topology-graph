@@ -294,7 +294,7 @@
                             graph.kinds(value);
                         });
 
-                        $scope.$watchGroup(["items", "relations"], function(values) {
+                        $scope.$watchCollection('[items, relations]', function(values) {
                             graph.data(values[0], values[1]);
                         });
 
