@@ -28,7 +28,7 @@
     /* A cache to prevent jumping when rapidly toggling views */
     var cache = { };
 
-    function topology_graph(selector, notify) {
+    function topology_graph(selector, force, notify) {
         var outer = d3.select(selector);
 
         /* Kinds of objects to show */
@@ -47,10 +47,13 @@
         var lookup = { };
         var selection = null;
 
-        var force = d3.layout.force()
-            .charge(-800)
-            .gravity(0.2)
-            .linkDistance(80);
+        /* Allow the force to be passed in, default if not */
+        if (!force) {
+            force = d3.layout.force()
+                .charge(-800)
+                .gravity(0.2)
+                .linkDistance(80);
+        }
 
         var drag = force.drag();
 
@@ -275,7 +278,8 @@
                         items: '=',
                         relations: '=',
                         kinds: '=',
-                        selection: '='
+                        selection: '=',
+                        force: '='
                     },
                     link: function($scope, element, attributes) {
                         element.css("display", "block");
@@ -286,7 +290,7 @@
 	                        graph.select(item);
                         }
 
-                        var graph = topology_graph(element[0], notify);
+                        var graph = topology_graph(element[0], $scope.force, notify);
                         graph.kinds($scope.kinds);
 
                         /* If there's a kinds in the current scope, watch it for changes */
