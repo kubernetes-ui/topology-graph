@@ -125,6 +125,12 @@ This is a scope event that will be emitted when the selection changes. The argum
 be the item (from the ```items``` map) that is being select, or ```null``` if nothing is
 selected.
 
+#### force
+Optional. A D3 force layout to use instead of creating one by default. The force layout size
+will be updated, and layout  will be started as appropriate. Reassigning this field after
+the directive has been created, will not affect the graph, but changes to force layout should
+work fine.
+
 Styling
 -------
 
