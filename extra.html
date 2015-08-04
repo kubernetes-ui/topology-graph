@@ -146,6 +146,11 @@
 		    $rootScope.$digest();
 		});
 
+                $rootScope.$on("render", function(ev, vertices) {
+                    vertices.selectAll("title").text(function(d) { return "Custom: " + d.id });
+                    ev.preventDefault();
+                });
+
                 $rootScope.$watch("selection", function(item) {
                    var text = "";
                    if (item)
