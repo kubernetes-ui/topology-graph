@@ -123,7 +123,8 @@ event, and change the selection.
 
 This is a scope event that will be emitted when the selection changes. The argument will
 be the item (from the ```items``` map) that is being select, or ```null``` if nothing is
-selected.
+selected. You can call ```event.preventDefault()``` during this event to prevent the default
+selection behavior.
 
 #### force
 Optional. A D3 force layout to use instead of creating one by default. The force layout size

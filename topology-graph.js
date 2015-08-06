@@ -285,8 +285,8 @@
                         element.css("display", "block");
 
                         function notify(item) {
-                            $scope.$emit("select", item);
-                            if (attributes["selection"] === undefined)
+                            var event = $scope.$emit("select", item);
+                            if (attributes["selection"] === undefined && !event.defaultPrevented)
 	                        graph.select(item);
                         }
 
