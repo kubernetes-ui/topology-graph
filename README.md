@@ -126,6 +126,14 @@ be the item (from the ```items``` map) that is being select, or ```null``` if no
 selected. You can call ```event.preventDefault()``` during this event to prevent the default
 selection behavior.
 
+#### 'render'
+
+This is a scope event that will be emitted when items are rendered as elements. The argument
+will be D3 selection of <g> elements that correspond to items. Each item has its data set to
+one of the items. The default implementation of this event sets the title from Kubernetes
+metadata and tweaks the look of for certain statuses. Use ```event.preventDefault()``` to
+prevent this default behavior.
+
 #### force
 Optional. A D3 force layout to use instead of creating one by default. The force layout size
 will be updated, and layout  will be started as appropriate. Reassigning this field after
