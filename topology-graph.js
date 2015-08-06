@@ -286,7 +286,7 @@
 
                         function notify(item) {
                             $scope.$emit("select", item);
-                            if (!("selection" in attributes))
+                            if (attributes["selection"] === undefined)
 	                        graph.select(item);
                         }
 
