@@ -120,13 +120,6 @@
 	    return text || "";
 	}
 
-        function weak(d) {
-	    var status = d.item.status;
-            if (status && status.phase && status.phase !== "Running")
-                return true;
-            return false;
-        }
-
         function adjust() {
             timeout = null;
             width = outer.node().clientWidth;
@@ -147,20 +140,17 @@
             edges.attr("class", function(d) { return d.kinds; });
 
             vertices = svg.selectAll("g")
-                .data(nodes, function(d) { return d.id; })
-                .classed("weak", weak);
+                .data(nodes, function(d) { return d.id; });
 
             vertices.exit().remove();
 
             var group = vertices.enter().append("g")
                 .attr("class", function(d) { return d.item.kind; })
-                .classed("weak", weak)
                 .call(drag);
 
             group.append("use")
                 .attr("xlink:href", icon);
-            group.append("title")
-                .text(function(d) { return d.item.metadata.name; });
+            group.append("title");
 
             select(selection);
 
@@ -243,6 +233,7 @@
                 items = new_items || { };
                 relations = new_relations || [];
                 digest();
+                return vertices;
             },
             close: function() {
 	        window.removeEventListener('resize', resized);
@@ -290,6 +281,19 @@
 	                        graph.select(item);
                         }
 
+                        function weak(d) {
+                            var status = d.item.status;
+                            if (status && status.phase && status.phase !== "Running")
+                                return true;
+                            return false;
+                        }
+
+                        function populate(vertices, edges) {
+                            vertices.selectAll("title")
+                                .text(function(d) { return d.item.metadata.name; });
+                            vertices.classed("weak", weak);
+                        }
+
                         var graph = topology_graph(element[0], $scope.force, notify);
                         graph.kinds($scope.kinds);
 
@@ -299,7 +303,10 @@
                         });
 
                         $scope.$watchCollection('[items, relations]', function(values) {
-                            graph.data(values[0], values[1]);
+                            var vertices = graph.data(values[0], values[1]);
+                            var event = $scope.$emit("render", vertices);
+                            if (!event.defaultPrevented)
+                                populate(vertices);
                         });
 
                         /* Watch the selection for changes */
