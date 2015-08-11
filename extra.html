@@ -58,53 +58,44 @@
 
        <kubernetes-topology-icon kind="Pod">
          <svg class="kube-topology">
-           <use xlink:href="#vertex-Pod" x="15" y="15"></use>
+           <g transform="translate(15, 15)" class="Pod">
+             <circle r="15"></circle>
+             <text y="7">P</text>
+           </g>
          </svg>
        </kubernetes-topology-icon>
        <label>Pods</label>
 
        <kubernetes-topology-icon kind="Service">
          <svg class="kube-topology">
-           <use xlink:href="#vertex-Service" x="15" y="15"></use>
+           <g transform="translate(15, 15)" class="Service">
+             <circle r="15"></circle>
+             <text y="7">S</text>
+           </g>
          </svg>
        </kubernetes-topology-icon>
        <label>Services</label>
 
        <kubernetes-topology-icon kind="Node">
          <svg class="kube-topology">
-           <use xlink:href="#vertex-Node" x="15" y="15"></use>
+           <g transform="translate(15, 15)" class="Node">
+             <circle r="15"></circle>
+             <text y="7">N</text>
+           </g>
          </svg>
        </kubernetes-topology-icon>
        <label>Nodes</label>
 
        <kubernetes-topology-icon kind="ReplicationController">
          <svg class="kube-topology">
-           <use xlink:href="#vertex-ReplicationController" x="15" y="15"></use>
+           <g transform="translate(15, 15)" class="ReplicationController">
+             <circle r="15"></circle>
+             <text y="7">R</text>
+           </g>
          </svg>
        </kubernetes-topology-icon>
        <label>Replication Controllers</label>
     </div>
-
-    <svg class="kube-topology" hidden>
-      <defs>
-        <g class="Node" id="vertex-Node">
-          <circle r="15"></circle>
-          <text y="9">&#xe621;</text>
-        </g>
-        <g class="Pod" id="vertex-Pod">
-          <circle r="15"></circle>
-          <text y="6" x="0.5">&#xf1b3;</text>
-        </g>
-        <g class="Service" id="vertex-Service">
-          <circle r="15"></circle>
-          <text y="10" x="1">&#xe61e;</text>
-        </g>
-        <g class="ReplicationController" id="vertex-ReplicationController">
-          <circle r="15"></circle>
-          <text y="7.5">&#xf1b8;</text>
-        </g>
-      </defs>
-    </svg>
 
     <script type="text/javascript">
         var datasets = [];
@@ -120,11 +111,12 @@
 
                 $rootScope.selection = null;
 
+                /* Since we don't use default render implementation, no need to do this */
                 $rootScope.kinds = {
-                  Pod: '#vertex-Pod',
-                  ReplicationController: '#vertex-ReplicationController',
-                  Node: '#vertex-Node',
-                  Service: '#vertex-Service',
+                    Pod: true,
+                    ReplicationController: true,
+                    Node: true,
+                    Service: true
                 };
 
                 $rootScope.topologyForce = d3.layout.force()
@@ -141,13 +133,28 @@
                     $rootScope.selection = $rootScope.data.items[id];
                 };
 
-		$rootScope.$on("select", function(ev, item) {
-		    $rootScope.selection = item;
-		    $rootScope.$digest();
-		});
+                $rootScope.$on("select", function(ev, item) {
+                    $rootScope.selection = item;
+                    $rootScope.$digest();
+                });
 
-                $rootScope.$on("render", function(ev, vertices) {
+                $rootScope.$on("render", function(ev, vertices, added) {
+                    /*
+                     * We are passed two selections of <g> elements:
+                     * vertices: All the elements
+                     * added: Just the ones that were added
+                     */
+                    added.attr("class", function(d) { return d.item.kind; });
+                    added.append("circle").attr("r", "15")
+                    added.append("title");
+                    added.append("text")
+                        .text(function(d) { return d.item.kind[0]; })
+                        .attr("y", 7);
+
                     vertices.selectAll("title").text(function(d) { return "Custom: " + d.id });
+                    vertices.selectAll("use").classed("running", function(d) { console.log(d); return true; });
+
+                    /* Don't do default rendering */
                     ev.preventDefault();
                 });
 
