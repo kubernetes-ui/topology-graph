@@ -48,7 +48,8 @@ kubernetes-topology-graph {
     stroke-width: 2px;
 }
 
-.kube-topology g.selected use {
+.kube-topology g.selected use,
+.kube-topology g.selected circle {
     stroke-width: 4px;
 }
 
