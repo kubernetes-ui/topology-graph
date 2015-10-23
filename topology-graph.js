@@ -41,6 +41,7 @@
         /* Graph information */
         var width;
         var height;
+        var radius = 14;
         var timeout;
         var nodes = [];
         var links = [];
@@ -71,7 +72,9 @@
                  .attr("x2", function(d) { return d.target.x; })
                  .attr("y2", function(d) { return d.target.y; });
 
-            vertices.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+            vertices.attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
+                    .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); })
+                    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
         });
 
         drag
