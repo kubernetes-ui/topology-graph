@@ -306,7 +306,7 @@
                             var added = args[1];
                             var event = $scope.$emit("render", vertices, added);
                             if (!event.defaultPrevented) {
-                                added.attr("class", function(d) { return d.item.kind; })
+                                added.attr("class", function(d) { return d.item.kind; });
                                 added.append("use").attr("xlink:href", icon);
                                 added.append("title");
                                 vertices.selectAll("title")
