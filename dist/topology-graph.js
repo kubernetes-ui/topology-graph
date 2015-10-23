@@ -72,9 +72,18 @@
                  .attr("x2", function(d) { return d.target.x; })
                  .attr("y2", function(d) { return d.target.y; });
 
-            vertices.attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
-                    .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); })
-                    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+            vertices
+                .attr("cx", function(d) {
+                    d.x = d.fixed ? d.x : Math.max(radius, Math.min(width - radius, d.x));
+                    return d.x;
+                })
+                .attr("cy", function(d) {
+                    d.y = d.fixed ? d.y : Math.max(radius, Math.min(height - radius, d.y));
+                    return d.y;
+                })
+                .attr("transform", function(d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
         });
 
         drag
@@ -297,7 +306,7 @@
                             var added = args[1];
                             var event = $scope.$emit("render", vertices, added);
                             if (!event.defaultPrevented) {
-                                added.attr("class", function(d) { return d.item.kind; })
+                                added.attr("class", function(d) { return d.item.kind; });
                                 added.append("use").attr("xlink:href", icon);
                                 added.append("title");
                                 vertices.selectAll("title")
