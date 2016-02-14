@@ -31,7 +31,7 @@
     "d3": ">=3.5.0 <=3.5.5"
   },
   "devDependencies": {
-    "patternfly": ">=2.0.0",
+    "patternfly": ">=2.9.0",
     "font-awesome": "*"
   }
 }
