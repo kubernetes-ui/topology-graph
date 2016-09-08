@@ -31,7 +31,6 @@ kubernetes-topology-graph {
 
 .kube-topology g.Service text {
     fill: #ff7f0e;
-    transform: translate(-3px,-1px)
 }
 
 .kube-topology g.ReplicationController text {
