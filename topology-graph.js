@@ -124,9 +124,10 @@
             });
 
         function select(item) {
-	    selection = item;
+	    if (item !== undefined)
+	        selection = item;
             svg.selectAll("g")
-                .classed("selected", function(d) { return d.item === item; });
+                .classed("selected", function(d) { return d.item === selection; });
         }
 
         function adjust() {
@@ -318,6 +319,7 @@
                                      .text(function(d) { return d.item.metadata.name; });
                                 vertices.classed("weak", weak);
                             }
+                            graph.select();
                         }
 
                         var options = {"force" : $scope.force, "radius" : $scope.radius};
@@ -334,7 +336,7 @@
 
                         /* Watch the selection for changes */
                         $scope.$watch("selection", function(item) {
-                            graph.select(item);
+                            graph.select(item || null);
                         });
 
                         element.on("$destroy", function() {
