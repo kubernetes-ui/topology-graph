@@ -1,7 +1,25 @@
 {
-  "description": "This is just use to pull devel dependencies",
-  "name": "topology-graph",
-  "private": true,
+  "name": "kubernetes-topology-graph",
+  "version": "0.0.23",
+  "description": "Provides a simple force directed topology graph of kubernetes items.",
+  "main": "dist/topology-graph.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kubernetes-ui/topology-graph.git"
+  },
+  "keywords": [
+    "kubernetes",
+    "angularjs"
+  ],
+  "author": "Stef Walter <stefw@redhat.com>",
+  "license": "LGPL-2.1",
+  "bugs": {
+    "url": "https://github.com/kubernetes-ui/topology-graph/issues"
+  },
+  "homepage": "https://github.com/kubernetes-ui/topology-graph#readme",
   "devDependencies": {
     "bower": "*",
     "grunt": "~0.4.5",
