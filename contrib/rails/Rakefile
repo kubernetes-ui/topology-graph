@@ -1,0 +1,15 @@
+require 'rake'
+require 'json'
+require 'bundler/gem_tasks'
+
+desc 'Copy version number from the JSON file'
+task :version do
+  path = 'lib/kubernetes-topology-graph/version.rb'
+  version = JSON.parse(File.read('../../bower.json'))['version']
+  content = "module KubernetesTopologyGraph\n\tVERSION = '#{version}'\nend\n"
+  File.write(path, content)
+end
+
+Rake::Task['build'].enhance do
+  Rake::Task['version'].invoke
+end

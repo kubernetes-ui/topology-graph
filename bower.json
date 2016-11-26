@@ -20,7 +20,8 @@
     "/topology-graph.*",
     "node_modules",
     "bower_components",
-    "scratch"
+    "scratch",
+    "contrib"
   ],
   "main": [
     "dist/topology-graph.js",
