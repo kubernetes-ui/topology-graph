@@ -194,6 +194,9 @@
                 }
 
                 node.id = id;
+                if(item.metadata)  {
+                   item.name = item.metadata.name;
+                }
                 node.item = item;
 
                 lookup[id] = nodes.length;
