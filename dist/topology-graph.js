@@ -33,6 +33,8 @@
 
         /* Kinds of objects to show */
         var kinds = null;
+        /* Filters to hide items */
+        var filters = null;
 
         /* Data we've been fed */
         var items = { };
@@ -124,9 +126,10 @@
             });
 
         function select(item) {
-	    selection = item;
+	    if (item !== undefined)
+	        selection = item;
             svg.selectAll("g")
-                .classed("selected", function(d) { return d.item === item; });
+                .classed("selected", function(d) { return d.item === selection; });
         }
 
         function adjust() {
@@ -166,6 +169,27 @@
             return added;
         }
 
+        /**
+          * Evaluates if an item should be displayed on topology graph.
+          *
+          * @param {JSON} item - item to be evaluated.
+          *
+          * @return true if the item should be displayed.
+          */
+         function isDisplayable(item) {
+            if (kinds && !kinds[item.kind])
+                return false;
+
+            for (var filter in filters){
+                if (filters.hasOwnProperty(filter)) {
+                    if (item[filter] && filters[filter].includes(item[filter]))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
         function digest() {
             var pnodes = nodes;
             var plookup = lookup;
@@ -175,12 +199,11 @@
             links = [];
             lookup = { };
 
-            var item, id, kind, node;
+            var item, id, node;
             for (id in items) {
                 item = items[id];
-                kind = item.kind;
 
-                if (kinds && !kinds[kind])
+                if (!isDisplayable(item))
                     continue;
 
                 /* Prevents flicker */
@@ -229,12 +252,17 @@
 
         return {
             select: select,
+            filters: function(value) {
+                filters = value;
+                var added = digest();
+                return [vertices, added];
+            },
             kinds: function(value) {
                 kinds = value;
                 var added = digest();
                 return [vertices, added];
             },
-	    data: function(new_items, new_relations) {
+	        data: function(new_items, new_relations) {
                 items = new_items || { };
                 relations = new_relations || [];
                 var added = digest();
@@ -274,6 +302,7 @@
                         items: '=',
                         relations: '=',
                         kinds: '=',
+                        filters: '=',
                         selection: '=',
                         force: '=',
                         radius: '='
@@ -318,6 +347,7 @@
                                      .text(function(d) { return d.item.metadata.name; });
                                 vertices.classed("weak", weak);
                             }
+                            graph.select();
                         }
 
                         var options = {"force" : $scope.force, "radius" : $scope.radius};
@@ -328,13 +358,17 @@
                             render(graph.kinds(value));
                         });
 
+                        $scope.$watch("filters", function(value) {
+                            render(graph.filters(value));
+                        }, true);
+
                         $scope.$watchCollection('[items, relations]', function(values) {
                             render(graph.data(values[0], values[1]));
                         });
 
                         /* Watch the selection for changes */
                         $scope.$watch("selection", function(item) {
-                            graph.select(item);
+                            graph.select(item || null);
                         });
 
                         element.on("$destroy", function() {
@@ -369,6 +403,59 @@
                             if ($scope.$parent)
 	                        $scope.$parent.$digest();
 	                    $scope.$digest();
+                        });
+                    }
+                };
+            }
+        )
+
+        /**
+         * Filters the topology items.
+         * When click on this component it will activate/disable the filter properties and remove
+         * those items that corresponds to the disabled filters.
+         *
+         * ATTRIBUTES:
+         * - filterProperty: corresponds to the name of item property that will be evaluated to filter
+         * - filterValue: the value of item property to filter
+         *                if the item property has this value, the item will be impacted.
+         *                it accepts more than one value (comma separated)
+         */
+        .directive('kubernetesTopologyFilter',
+            function() {
+                return {
+                    restrict: 'E',
+                    transclude: true,
+                    template: "<ng-transclude></ng-transclude>",
+                    link: function($scope, element, attrs) {
+                        var filterProperty = attrs.filterProperty;
+                        var filterValue = attrs.filterValue.split(',');
+                        $scope.filters[filterProperty] = $scope.filters[filterProperty] || [];
+
+                        var filteredValues = $scope.filters[filterProperty];
+
+                        $scope.$watchCollection("filters." + filterProperty, function() {
+                            element.toggleClass("active", filterValue.some(function(value) {
+                                return !filteredValues.includes(value)
+                            }));
+                        });
+
+                        element.on("click", function() {
+                            $scope.filters[filterProperty] = $scope.filters[filterProperty] || [];
+
+                            filterValue.forEach(function(value) {
+                                var index = filteredValues.indexOf(value);
+
+                                if (index > -1) {
+                                    filteredValues.splice(index, 1);
+                                } else {
+                                    filteredValues.push(value);
+                                }
+                            });
+
+                            if ($scope.$parent)
+                                $scope.$parent.$digest();
+
+                            $scope.$digest();
                         });
                     }
                 };
