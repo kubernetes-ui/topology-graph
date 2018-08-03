@@ -38,6 +38,7 @@ kubernetes-topology-graph {
     stroke-dasharray: 5, 2;
 }
 
+kubernetes-topology-filter,
 kubernetes-topology-icon {
     display: inline-block;
     vertical-align: middle;
@@ -46,20 +47,24 @@ kubernetes-topology-icon {
     user-select: none;
 }
 
+kubernetes-topology-filter svg,
 kubernetes-topology-icon svg {
     width: 32px;
     height: 32px;
     display: block;
 }
 
+kubernetes-topology-filter use,
 kubernetes-topology-icon use {
     opacity: 0.4;
 }
 
+kubernetes-topology-filter.active use,
 kubernetes-topology-icon.active use {
     opacity: 1;
 }
 
+kubernetes-topology-filter:hover use,
 kubernetes-topology-icon:hover use {
     opacity: 0.7;
 }
